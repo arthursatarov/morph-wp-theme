@@ -15,6 +15,13 @@
 	"require": {
 		"composer/installers": "^2.0"
 	},
+	"require-dev": {
+		"squizlabs/php_codesniffer": "*",
+		"phpcompatibility/php-compatibility": "*",
+		"dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+		"wp-coding-standards/wpcs": "^3.1",
+		"phpcompatibility/phpcompatibility-wp": "^2.1"
+	},
 	"extra": {
 		"installer-paths": {
 			"./www/plugins/{$name}/": [
@@ -27,7 +34,14 @@
 	},
 	"config": {
 		"allow-plugins": {
-			"composer/installers": true
+			"composer/installers": true,
+			"dealerdirect/phpcodesniffer-composer-installer": true
 		}
+	},
+	"scripts": {
+		"format": "phpcbf --report=summary,source",
+		"lint": "phpcs --report=code",
+		"report": "phpcs --report=info",
+		"pot": "wp i18n make-pot . build/languages/wd_s.pot --exclude=node_modules,vendor,build --allow-root"
 	}
 }
