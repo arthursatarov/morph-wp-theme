@@ -36,17 +36,8 @@ services:
   wpcli:
     image: wordpress:cli
     container_name: ${PROJECT_NAME}_wpcli
-    volumes:
-      # WordPress
-      - ./www/wp-core:/var/www/html
-      - ./www/themes:/var/www/html/wp-content/themes
-      - ./www/plugins:/var/www/html/wp-content/plugins
-      - ./www/uploads:/var/www/html/wp-content/uploads
-      - ./www/logs:/var/www/html/wp-content/logs
-
-      # Configs
-      - ./configs/php.ini:/usr/local/etc/php/conf.d/conf.ini
-      - ./configs/error-logging.ini:/usr/local/etc/php/conf.d/error-logging.ini
+    volumes_from:
+      - wp
     entrypoint: wp
     environment:
       WORDPRESS_DB_HOST: ${DB_HOST}
