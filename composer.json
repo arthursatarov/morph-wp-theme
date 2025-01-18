@@ -1,0 +1,33 @@
+{
+	"name": "arthursatarov/morph-wp-theme",
+	"description": "WordPress Starter Theme",
+	"type": "project",
+	"repositories": [
+		{
+			"type": "composer",
+			"url": "https://wpackagist.org",
+			"only": [
+				"wpackagist-plugin/*",
+				"wpackagist-theme/*"
+			]
+		}
+	],
+	"require": {
+		"composer/installers": "^2.0"
+	},
+	"extra": {
+		"installer-paths": {
+			"./www/plugins/{$name}/": [
+				"type:wordpress-plugin"
+			],
+			"./www/themes/{$name}/": [
+				"type:wordpress-theme"
+			]
+		}
+	},
+	"config": {
+		"allow-plugins": {
+			"composer/installers": true
+		}
+	}
+}
