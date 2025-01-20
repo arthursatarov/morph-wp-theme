@@ -14,11 +14,11 @@ namespace MORPH;
  */
 function enqueue_scripts(): void {
 	// Theme scripts.
-	wp_register_script( 'morphs', SCRIPTS_URL . '/index.js', array(), THEME_VERSION, true );
+	wp_register_script( 'morph', SCRIPTS_URL . '/main.js', array(), THEME_VERSION, true );
 	wp_enqueue_script( 'morph' );
 
 	// Theme styles.
-	wp_register_style( 'morph', STYLES_URL . '/index.css', array(), THEME_VERSION, 'all' );
+	wp_register_style( 'morph', STYLES_URL . '/main.css', array(), THEME_VERSION, 'all' );
 	wp_enqueue_style( 'morph' );
 }
 
