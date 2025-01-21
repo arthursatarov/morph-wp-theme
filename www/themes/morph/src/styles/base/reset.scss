@@ -1,0 +1,45 @@
+// Apply border-box sizing to all elements
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+// Reset margin and padding for all elements
+* {
+	padding: 0;
+	margin: 0;
+}
+
+// Prevent text size adjustments in all browsers
+html {
+	text-size-adjust: none;
+}
+
+// Ensure media elements are displayed as blocks
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+	display: block;
+}
+
+// Make media elements responsive within their containers
+img,
+picture,
+video,
+canvas,
+svg {
+	inline-size: 100%;
+	block-size: auto;
+}
+
+// Sets a top margin of 2 times the current font size (2ex)
+// to improve readability of content when scrolling to the anchor.
+:target {
+	scroll-margin-block-start: 5ex;
+}
