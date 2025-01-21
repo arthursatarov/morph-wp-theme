@@ -1,58 +1,58 @@
-"use strict";
+'use strict';
 
-import gulp from "gulp";
+import gulp from 'gulp';
 const { src, dest, watch, series, parallel } = gulp;
-import autoprefixer from "autoprefixer";
-import cssnano from "cssnano";
-import postcss from "gulp-postcss";
-import sortMediaQueries from "postcss-sort-media-queries";
-import * as dartSass from "sass";
-import gulpSass from "gulp-sass";
+import autoprefixer from 'autoprefixer';
+import cssnano from 'cssnano';
+import postcss from 'gulp-postcss';
+import sortMediaQueries from 'postcss-sort-media-queries';
+import * as dartSass from 'sass';
+import gulpSass from 'gulp-sass';
 const sass = gulpSass(dartSass);
-import esbuild from "gulp-esbuild";
-import browserSync from "browser-sync";
-import { deleteAsync } from "del";
-import newer from "gulp-newer";
-import notify from "gulp-notify";
-import plumber from "gulp-plumber";
-import sourcemaps from "gulp-sourcemaps";
+import esbuild from 'gulp-esbuild';
+import browserSync from 'browser-sync';
+import { deleteAsync } from 'del';
+import newer from 'gulp-newer';
+import notify from 'gulp-notify';
+import plumber from 'gulp-plumber';
+import sourcemaps from 'gulp-sourcemaps';
 
 const paths = {
 	src: {
-		styles: "./src/styles/main.scss",
-		scripts: "./src/scripts/main.js",
-		fonts: "./src/fonts/**/*.{ttf,eof,woff,woff2}",
-		images: "./src/images/**/*.{jpg,png,svg,gif,webp}",
+		styles: './src/styles/main.scss',
+		scripts: './src/scripts/main.js',
+		fonts: './src/fonts/**/*.{ttf,eof,woff,woff2}',
+		images: './src/images/**/*.{jpg,png,svg,gif,webp}',
 	},
 	build: {
-		styles: "./assets/styles/",
-		scripts: "./assets/scripts/",
-		fonts: "./assets/fonts/",
-		images: "./assets/images/",
+		styles: './assets/styles/',
+		scripts: './assets/scripts/',
+		fonts: './assets/fonts/',
+		images: './assets/images/',
 	},
 	watch: {
-		php: "**/*.php",
-		styles: "./src/styles/**/*.scss",
-		scripts: "./src/scripts/**/*.js",
-		images: "./src/images/**/*.{jpg,png,svg,gif,webp}",
-		fonts: "./src/fonts/**/*.{ttf,eof,woff,woff2}",
+		php: '**/*.php',
+		styles: './src/styles/**/*.scss',
+		scripts: './src/scripts/**/*.js',
+		images: './src/images/**/*.{jpg,png,svg,gif,webp}',
+		fonts: './src/fonts/**/*.{ttf,eof,woff,woff2}',
 	},
 };
 
 const onError = function (err) {
 	notify.onError({
-		message: "\n\n❌  ===> ERROR: <%= error.message %>\n",
+		message: '\n\n❌  ===> ERROR: <%= error.message %>\n',
 	})(err);
 
-	this.emit("end");
+	this.emit('end');
 };
 
 function scriptsDev() {
 	let esbuildConfig = {
-		target: "es2020",
+		target: 'es2020',
 		bundle: true,
 		write: false,
-		sourcemap: "inline",
+		sourcemap: 'inline',
 	};
 
 	return src(paths.src.scripts)
@@ -64,7 +64,7 @@ function scriptsDev() {
 
 function scriptsProd() {
 	let esbuildConfig = {
-		target: "es2020",
+		target: 'es2020',
 		bundle: true,
 		write: false,
 		minify: true,
@@ -119,12 +119,12 @@ function copyImages() {
 function serve() {
 	browserSync.init({
 		ui: false,
-		proxy: "localhost:8000",
+		proxy: 'localhost:8000',
 		port: 3000,
 		open: false,
 	});
 
-	watch(paths.watch.php).on("change", browserSync.reload);
+	watch(paths.watch.php).on('change', browserSync.reload);
 	watch(paths.watch.scripts, scriptsDev);
 	watch(paths.watch.styles, stylesDev);
 	watch(paths.watch.fonts, copyFonts);
@@ -132,7 +132,7 @@ function serve() {
 }
 
 function clean(cb) {
-	deleteAsync(["./assets"]).then(() => cb());
+	deleteAsync(['./assets']).then(() => cb());
 }
 
 const dev = series(
