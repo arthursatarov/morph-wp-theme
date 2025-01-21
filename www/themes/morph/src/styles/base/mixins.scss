@@ -1,0 +1,54 @@
+@use "sass:map";
+@use "variables" as tokens;
+
+// ========================================
+// Media Queries
+// ========================================
+
+// Mixin for styles above a certain breakpoint (inclusive)
+@mixin media-min($breakpoint) {
+	$breakpoints: tokens.$breakpoints;
+
+	@if map.has-key($breakpoints, $breakpoint) {
+		$min-width: map.get($breakpoints, $breakpoint);
+
+		@media (min-width: $min-width) {
+			@content;
+		}
+	} @else {
+		@warn 'Breakpoint `#{$breakpoint}` not found. Available breakpoints are: #{map-keys($breakpoints)}.';
+	}
+}
+
+// Mixin for styles below a certain breakpoint (exclusive)
+@mixin media-max($breakpoint) {
+	$breakpoints: tokens.$breakpoints;
+
+	@if map.has-key($breakpoints, $breakpoint) {
+		$max-width: map.get($breakpoints, $breakpoint);
+
+		@media (max-width: calc($max-width - 0.001em)) {
+			@content;
+		}
+	} @else {
+		@warn 'Breakpoint `#{$breakpoint}` not found. Available breakpoints are: #{map-keys($breakpoints)}.';
+	}
+}
+
+// Mixin for styles between two breakpoints (inclusive min, exclusive max)
+@mixin media-between($min-breakpoint, $max-breakpoint) {
+	$breakpoints: tokens.$breakpoints;
+
+	@if map.has-key($breakpoints, $min-breakpoint) and
+		map.has-key($breakpoints, $max-breakpoint)
+	{
+		$min-width: map.get($breakpoints, $min-breakpoint);
+		$max-width: map.get($breakpoints, $max-breakpoint);
+
+		@media (min-width: $min-width) and (max-width: calc($max-width - 0.001em)) {
+			@content;
+		}
+	} @else {
+		@warn 'Breakpoints `#{$min-breakpoint}` or `#{$max-breakpoint}` not found. Available breakpoints are: #{map-keys($breakpoints)}.';
+	}
+}
