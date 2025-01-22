@@ -1,0 +1,19 @@
+.grid {
+	--grid-cols: 12;
+	--grid-item-min-size: 0;
+	--grid-row-gap: 1rem;
+	--grid-col-gap: 1rem;
+	--grid-gap: var(--grid-row-gap) var(--grid-col-gap);
+
+	display: grid;
+	grid-template-columns: repeat(
+		var(--grid-cols, 12),
+		minmax(var(--grid-item-min-size, 0), 1fr)
+	);
+	gap: var(--grid-gap);
+}
+
+.grid[data-grid-layout="auto"] {
+	--grid-cols: auto-fill;
+	--grid-item-min-size: 16rem;
+}

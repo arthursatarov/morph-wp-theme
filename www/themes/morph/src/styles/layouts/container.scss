@@ -1,0 +1,17 @@
+.container {
+	box-sizing: content-box;
+	inline-size: 100%;
+	max-inline-size: var(--container-width, 82.5rem);
+	padding-inline: var(--container-gap, 1rem);
+	margin-inline: auto;
+
+	// Remove gap from nested .container
+	& > .container {
+		--container-gap: 0;
+	}
+}
+
+// Takes up the entire available width
+.container[data-container-size="fluid"] {
+	--container-width: 100%;
+}

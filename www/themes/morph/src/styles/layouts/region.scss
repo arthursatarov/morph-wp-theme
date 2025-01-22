@@ -1,0 +1,18 @@
+@use "sass:map";
+
+
+$region-spacers: (
+	"sm": "var(--space-2xl)",
+	"md": "var(--space-3xl)",
+	"lg": "var(--space-4xl)",
+);
+
+.region {
+	padding-block: var(--region-space, 8rem);
+}
+
+@each $key, $value in $region-spacers {
+	.region[data-region-space="#{$key}"] {
+		--region-space: #{$value};
+	}
+}
