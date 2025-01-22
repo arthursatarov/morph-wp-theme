@@ -1,6 +1,5 @@
 .container {
 	box-sizing: content-box;
-	inline-size: 100%;
 	max-inline-size: var(--container-width, 82.5rem);
 	padding-inline: var(--container-gap, 1rem);
 	margin-inline: auto;
