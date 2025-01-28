@@ -52,3 +52,17 @@
 		@warn 'Breakpoints `#{$min-breakpoint}` or `#{$max-breakpoint}` not found. Available breakpoints are: #{map-keys($breakpoints)}.';
 	}
 }
+
+// ========================================
+// Font-face
+// ========================================
+
+@mixin font-face($font-weight, $font-family, $file-name, $font-style) {
+	@font-face {
+		font-family: '#{$font-family}';
+		font-style: #{$font-style};
+		font-weight: $font-weight;
+		src: url('../fonts/#{$file-name}.woff2') format('woff2');
+		font-display: swap;
+	}
+}
