@@ -29,10 +29,10 @@
 	},
 	"extra": {
 		"installer-paths": {
-			"./www/plugins/{$name}/": [
+			"www/plugins/{$name}/": [
 				"type:wordpress-plugin"
 			],
-			"./www/themes/{$name}/": [
+			"www/themes/{$name}/": [
 				"type:wordpress-theme"
 			]
 		}
