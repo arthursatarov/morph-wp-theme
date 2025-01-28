@@ -16,6 +16,53 @@ html {
 	text-size-adjust: none;
 }
 
+// Core body styles
+body {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	min-block-size: 100vh;
+	font-family: var(--font-family-body);
+	font-size: var(--font-size-md);
+	font-weight: var(--font-weight-40);
+	line-height: var(--line-height-xl);
+
+	& > :is(header, main, footer) {
+		flex: 0 0 auto;
+	}
+
+	& > main {
+		flex-grow: 1;
+	}
+}
+
+// Headings
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: var(--font-family-heading);
+	font-weight: var(--font-weight-70);
+	line-height: var(--line-height-2xs);
+	text-wrap: balance;
+	overflow-wrap: break-word;
+}
+
+// Set line length
+:where(figcaption, p, li, dd) {
+	max-inline-size: 80ch;
+	text-wrap: pretty;
+}
+
+// Remove list styles on ul, ol elements with a list role,
+// which suggests default styling will be removed
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
 // Ensure media elements are displayed as blocks
 img,
 svg,
@@ -36,6 +83,16 @@ canvas,
 svg {
 	inline-size: 100%;
 	block-size: auto;
+}
+
+// Inherit font styles for input, button, textarea, and select elements
+input, button, textarea, select {
+	font: inherit;
+}
+
+// Set a minimum block size for textareas that do not specify rows
+textarea:not([rows]) {
+	min-block-size: 10em;
 }
 
 // Sets a top margin of 2 times the current font size (2ex)
