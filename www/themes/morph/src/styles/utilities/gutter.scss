@@ -1,0 +1,11 @@
+@use "../base/variables" as tokens;
+
+[class^='gutter'] > * {
+  gap: var(--gutter);
+}
+
+@each $key, $value in tokens.$spacers {
+	.gutter-#{$key} {
+		--gutter: var(--space-#{$key});
+	}
+}
