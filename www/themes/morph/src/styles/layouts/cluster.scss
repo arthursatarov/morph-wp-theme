@@ -1,30 +1,9 @@
 @use "sass:map";
 
-$cluster-spacers: (
-	"sm": "var(--space-xs)",
-	"md": "var(--space-sm)",
-	"lg": "var(--space-md)",
-);
-
 .cluster {
 	display: flex;
 	flex-wrap: wrap;
-	gap: var(--cluster-gap, 1rem);
+	gap: var(--gutter, 1rem);
 	align-items: var(--cluster-items, center);
 	justify-content: var(--cluster-justify, flex-start);
-}
-
-.cluster[data-cluster-justify="start"] { --cluster-justify: flex-start; }
-.cluster[data-cluster-justify="end"] { --cluster-justify: flex-end; }
-.cluster[data-cluster-justify="center"] { --cluster-justify: center; }
-.cluster[data-cluster-justify="between"] { --cluster-justify: space-between; }
-
-.cluster[data-cluster-items="start"] { --cluster-justify: flex-start; }
-.cluster[data-cluster-items="end"] { --cluster-justify: flex-end; }
-.cluster[data-cluster-items="center"] { --cluster-justify: center; }
-
-@each $key, $value in $cluster-spacers {
-	.stack[data-cluster-space="#{$key}"] {
-		--cluster-space: #{$value};
-	}
 }
