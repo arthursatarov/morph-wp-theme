@@ -1,0 +1,94 @@
+@use "sass:map";
+@use "../base/variables" as tokens;
+
+// ========================================
+// Margins
+// ========================================
+
+// margin-block
+@each $key, $value in tokens.$spacers {
+	.my-#{$key} {
+		margin-block: var(--space-#{$key});
+	}
+}
+
+// margin-block-start
+@each $key, $value in tokens.$spacers {
+	.mt-#{$key} {
+		margin-block-start: var(--space-#{$key});
+	}
+}
+
+// margin-block-end
+@each $key, $value in tokens.$spacers {
+	.mb-#{$key} {
+		margin-block-end: var(--space-#{$key});
+	}
+}
+
+// margin-inline
+@each $key, $value in tokens.$spacers {
+	.mx-#{$key} {
+		margin-inline: var(--space-#{$key});
+	}
+}
+
+// margin-inline-start
+@each $key, $value in tokens.$spacers {
+	.ml-#{$key} {
+		margin-inline-start: var(--space-#{$key});
+	}
+}
+
+// margin-inline-end
+@each $key, $value in tokens.$spacers {
+	.mr-#{$key} {
+		margin-inline-end: var(--space-#{$key});
+	}
+}
+
+// ========================================
+// Paddings
+// ========================================
+
+// padding-block
+@each $key, $value in tokens.$spacers {
+	.py-#{$key} {
+		padding-block: var(--space-#{$key});
+	}
+}
+
+// padding-block-start
+@each $key, $value in tokens.$spacers {
+	.pt-#{$key} {
+		padding-block-start: var(--space-#{$key});
+	}
+}
+
+// padding-block-end
+@each $key, $value in tokens.$spacers {
+	.pb-#{$key} {
+		padding-block-end: var(--space-#{$key});
+	}
+}
+
+// padding-inline
+@each $key, $value in tokens.$spacers {
+	.px-#{$key} {
+		padding-inline: var(--space-#{$key});
+	}
+}
+
+// padding-inline-start
+@each $key, $value in tokens.$spacers {
+	.pl-#{$key} {
+		padding-inline-start: var(--space-#{$key});
+	}
+}
+
+// padding-inline-end
+@each $key, $value in tokens.$spacers {
+	.pr-#{$key} {
+		padding-inline-end: var(--space-#{$key});
+	}
+}
